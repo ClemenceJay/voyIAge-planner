@@ -1,0 +1,28 @@
+.title {
+    color: #8cbece;
+    font-family: Patrick Hand, arial, sans-serif;
+    font-size: 4rem;
+}
+
+.soustitre {
+    color: #8cbece;
+    font-size: 1rem;
+    font-family: Quicksand, arial, sans-serif;
+}
+
+.buttonStart {
+    font-family: Patrick Hand, arial, sans-serif;
+    border: none;
+    background-color: #f3d4c2;
+    color: #f9a774;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.buttonStart:hover {
+    background-color: #f1d6c7;
+    color: #ff9251;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}

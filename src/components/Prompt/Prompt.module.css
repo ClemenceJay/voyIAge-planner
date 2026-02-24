@@ -1,0 +1,28 @@
+
+.textareaPrompt{
+    background-color: transparent;
+    width: 100%;
+    max-height: 150px;
+    border: 2px solid #8cbece;
+    border-radius: 15px;
+    color: #f9a774;
+    resize: none;
+    padding: 10px 0;
+}
+
+.buttonPrompt {
+    font-family: Patrick Hand, arial, sans-serif;
+    border: none;
+    background-color: #8cbece;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.buttonPrompt:hover {
+    background-color: #a4d2e1;
+    color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
