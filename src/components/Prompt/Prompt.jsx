@@ -1,11 +1,12 @@
 import React from 'react';
 import { useState, useRef } from 'react';
 import styles from './Prompt.module.css';
+import promptJsonTemplate from "../../templates/promptJsonTemplate.jsx";
 
-const Prompt = () => {
+const Prompt = ({setReponseOpenAI}) => {
+
     const [userPrompt, setUserPrompt] = useState("");
-    const [reponseOpenAI, setReponseOpenAI] = useState("");
-    console.log(userPrompt);
+    const [displayLoading, setDisplayLoading] = useState(false);
 
     // Gestion de la hauteur du textarea qui se resize automatiquement
     const textareaRef = useRef(null);
@@ -20,6 +21,8 @@ const Prompt = () => {
         let prompt = textareaRef.current.value;
         setUserPrompt(prompt);
 
+        setDisplayLoading(true);
+
         try {
             const response = await fetch('https://api.openai.com/v1/responses', {
                 method: 'POST',
@@ -29,7 +32,9 @@ const Prompt = () => {
                 },
                 body: JSON.stringify({
                     model: 'gpt-5-mini',
-                    input: prompt
+                    input: `Tu es un organisateur de voyage. Voici ce que mon utilisateur souhaite pour son voyage : ${prompt}.
+                    Propose moi un voyage qui correspond à sa demande et fournit moi la réponse sous le format JSON suivant:
+                    ${promptJsonTemplate}`
                 })
             });
 
@@ -38,19 +43,25 @@ const Prompt = () => {
 
             outputData.map((output) => {
                 if (output.role === 'assistant') {
-                    setReponseOpenAI(output.content[0].text);
+                    try {
+                        const jsonString = output.content[0].text;
+                        const parsedObject = JSON.parse(jsonString);
+                        setReponseOpenAI(parsedObject);
+                    } catch (e) {
+                        console.error("Erreur parsing JSON :", e);
+                    }
                 }
             })
 
-            console.log("Réponse OpenAI :", reponseOpenAI);
-
         } catch (error) {
             console.error('Erreur lors de la requête à OpenAI :', error);
+        } finally {
+            setDisplayLoading(false);
         }
     }
 
     return (
-        <>
+        <div className={styles.promptArea}>
             <textarea
                 className={styles.textareaPrompt}
                 ref={textareaRef}
@@ -58,10 +69,15 @@ const Prompt = () => {
                 rows={1}
                 placeholder='Décrivez nous votre voyage de rêve...' >
             </textarea>
-            <button className={styles.buttonPrompt} onClick={() => {handleSubmit()}}>
-                Générer mon voyage
-            </button>
-        </>
+            {displayLoading ?
+                <div className={styles.loader}></div>
+                 :
+                <button
+                    className={styles.buttonPrompt}
+                    onClick={handleSubmit}
+                > Générer mon voyage</button>
+            }
+        </div>
     );
 };
 

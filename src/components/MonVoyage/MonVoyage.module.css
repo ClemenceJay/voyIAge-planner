@@ -1,0 +1,22 @@
+.voyagePage {
+    margin: 0 4rem;
+    height: 500px;
+    width: 90%;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 50px;
+    padding: 20px;
+}
+
+.title {
+    color: #8cbece;
+    font-family: Patrick Hand, arial, sans-serif;
+    font-size: 2rem;
+    margin: 0;
+}
