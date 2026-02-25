@@ -1,5 +1,5 @@
 .voyagePage {
-    margin: 0 4rem;
+    margin: 0 auto;
     height: 500px;
     width: 90%;
     background-color: rgba(255, 255, 255, 0.6);
@@ -11,12 +11,6 @@
     justify-content: flex-start;
     align-items: center;
     gap: 50px;
-    padding: 20px;
-}
-
-.title {
-    color: #8cbece;
-    font-family: Patrick Hand, arial, sans-serif;
-    font-size: 2rem;
-    margin: 0;
+    padding: 10px 20px;
+    font-size: 14px;
 }
