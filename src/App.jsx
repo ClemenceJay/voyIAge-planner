@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import './App.css'
 import Accueil from "./components/Accueil/Accueil.jsx";
 import MonVoyage from "./components/MonVoyage/MonVoyage.jsx";
@@ -9,19 +9,17 @@ function App() {
 
     const [reponseOpenAI, setReponseOpenAI] = useState(null);
 
-    // Le hook pour déclencher la navigation entre les pages
-    const navigate = useNavigate();
-
-    // Affichage de la page MonVoayage dès que la réponse d'OpenAI est dispo
+    // On récupère si il y a un précédent voyage déjà dans le local storage
     useEffect(() => {
-        if (reponseOpenAI) {
-            navigate("/mon-voyage");
+        const voyageStored = localStorage.getItem("monVoyage");
+        if (voyageStored) {
+            setReponseOpenAI(JSON.parse(voyageStored));
         }
-    }, [reponseOpenAI, navigate])
+    },[])
 
     return (
         <Routes>
-            <Route path="/" element={<Accueil setReponseOpenAI={setReponseOpenAI} />} />
+            <Route path="/" element={<Accueil setReponseOpenAI={setReponseOpenAI} reponseOpenAI={reponseOpenAI}/>} />
             <Route path="/mon-voyage" element={<MonVoyage reponseOpenAI={reponseOpenAI} />} />
         </Routes>
     )

@@ -10,4 +10,23 @@
   background-image: url("./assets/background.jpg");
   background-size: cover;
   background-position: center;
+
+  --primary-blue: #8cbece;
+  --secondary-blue: #a4d2e1;
+  --primary-red: #f9a774;
+  --secondary-red: #f3d4c2;
+
+}
+
+button {
+  font-family: Patrick Hand, arial, sans-serif;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }

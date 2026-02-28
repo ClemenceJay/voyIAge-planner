@@ -18,20 +18,14 @@
 }
 
 .buttonPrompt {
-    font-family: Patrick Hand, arial, sans-serif;
-    border: none;
     background-color: #8cbece;
     color: #fff;
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
 }
 
 .buttonPrompt:hover {
     background-color: #a4d2e1;
     color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .loader {

@@ -2,11 +2,15 @@ import React from 'react';
 import { useState, useRef } from 'react';
 import styles from './Prompt.module.css';
 import promptJsonTemplate from "../../templates/promptJsonTemplate.jsx";
+import {useNavigate} from "react-router-dom";
 
 const Prompt = ({setReponseOpenAI}) => {
 
     const [userPrompt, setUserPrompt] = useState("");
     const [displayLoading, setDisplayLoading] = useState(false);
+
+    // Le hook pour déclencher la navigation entre les pages
+    const navigate = useNavigate();
 
     // Gestion de la hauteur du textarea qui se resize automatiquement
     const textareaRef = useRef(null);
@@ -45,8 +49,15 @@ const Prompt = ({setReponseOpenAI}) => {
                 if (output.role === 'assistant') {
                     try {
                         const jsonString = output.content[0].text;
+                        // On stock la string obtenue dans localstorage pour le retrouver ensuite plus facilement
+                        localStorage.setItem("monVoyage", jsonString);
+                        // On stock dans le state l'objet directement exploitable
                         const parsedObject = JSON.parse(jsonString);
                         setReponseOpenAI(parsedObject);
+
+                        // On navigue vers la page MonVoyage
+                        navigate("/mon-voyage");
+
                     } catch (e) {
                         console.error("Erreur parsing JSON :", e);
                     }
