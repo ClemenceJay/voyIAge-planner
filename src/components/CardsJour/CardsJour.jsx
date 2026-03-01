@@ -10,12 +10,12 @@ const CardsJour = ({jour}) => {
             {jour.matin.map((activite) => {
                 return (<>
                     <p>{activite.activite}</p>
-                    <p>{jour.matin.descr}</p>
+                    <p>{activite.descr}</p>
                 </>)
             })}{jour.apresMidi.map((activite) => {
                 return (<>
                     <p>{activite.activite}</p>
-                    <p>{jour.matin.descr}</p>
+                    <p>{activite.descr}</p>
                 </>)
             })}
         </div>

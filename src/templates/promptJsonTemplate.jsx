@@ -6,8 +6,7 @@ const promptJsonTemplate = `{
     "type": "Type de voyage choisi par l'utilisateur",
     "niveauActivite": "niveau d'activité choisi l'utilisateur",
     "profil": {
-      "nbVoyageur": "Nombre de voyageur défini par l'utilisateur",
-      "tranchesAge": "Tranches d'âge des voyageurs définies par l'utilisateur",
+      "groupe": "Information très courte sur le groupe de voyage (ex: famille, couple, amis, solo)",
       "vehicule": "si l'utilisateur est véhiculé ou non"
     },
   },
@@ -16,6 +15,8 @@ const promptJsonTemplate = `{
     {
       "jour": "numéro du jour",
       "lieu": "ville(s) de la journée",
+      "resume": "Résumé de la journée en une seule phrase courte de quelques mots",
+      //Le nombre d'activité dans chaque partie de la journée peut varier en fonction du type de voyage et de l'activité choisi par l'utilisateur, il faut donc prévoir un nombre d'activité de 0, 1 ou plus pour le matin et l'après-midi et une seule activité pour le déjeuner et le soir
       "matin": [
         {
           "activite": "lieu à voir/activité à faire",

@@ -5,10 +5,12 @@ import styles from './ListeJours.module.css';
 const ListeJours = ({planningVoyage}) => {
 
     return (
-        <div className={styles.listeJours}>
-            {planningVoyage.map((infoJour) => {
-                return <CardsJour jour={infoJour} />
-            })}
+        <div className={styles.listeJoursWrapper}>
+            <div className={styles.listeJours}>
+                {planningVoyage.map((infoJour) => {
+                    return <CardsJour jour={infoJour} />
+                })}
+            </div>
         </div>
     );
 };

@@ -1,7 +1,10 @@
-.listeJours {
+.listeJoursWrapper {
     width: 100%;
-    display: flex;
-    justify-content: center;
+    overflow-x: auto;
+    text-align: center;
+}
+
+.listeJours {
+    display: inline-flex;
     gap: 10px;
-    overflow: auto;
 }
